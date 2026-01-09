@@ -8,6 +8,7 @@
 
 import XCTest
 import Vision
+@testable import ObjectDetection_CoreML
 
 class ObjectDetection_CoreMLTests: XCTestCase {
 
@@ -25,7 +26,7 @@ class ObjectDetection_CoreMLTests: XCTestCase {
     }
 
     func testPerformanceYOLOv5sModel() {
-        let model: VNCoreMLModel? = try? VNCoreMLModel(for: yolov5s().model)
+        let model: VNCoreMLModel? = try? VNCoreMLModel(for: yolov8s().model)
         let ssdRequest: VNCoreMLRequest? = VNCoreMLRequest(model: model!, completionHandler: nil)
         ssdRequest?.imageCropAndScaleOption = .scaleFill
         

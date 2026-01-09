@@ -8,13 +8,13 @@
 
 import UIKit
 
-protocol 📏Delegate {
+protocol PerformanceMeasureDelegate {
     func updateMeasure(inferenceTime: Double, executionTime: Double, fps: Int)
 }
 // Performance Measurement
-class 📏 {
-    
-    var delegate: 📏Delegate?
+class PerformanceMeasure {
+
+    var delegate: PerformanceMeasureDelegate?
     
     var index: Int = -1
     var measurements: [Dictionary<String, Double>]
@@ -28,17 +28,17 @@ class 📏 {
     }
     
     // start
-    func 🎬👏() {
+    func start() {
         index += 1
         index %= 30
         measurements[index] = [:]
-        
-        🏷(for: index, with: "start")
+
+        mark(for: index, with: "start")
     }
-    
+
     // stop
-    func 🎬🤚() {
-        🏷(for: index, with: "end")
+    func stop() {
+        mark(for: index, with: "end")
         
         let beforeMeasurement = getBeforeMeasurment(for: index)
         let currentMeasurement = measurements[index]
@@ -54,11 +54,11 @@ class 📏 {
     }
     
     // labeling with
-    func 🏷(with msg: String? = "") {
-        🏷(for: index, with: msg)
+    func mark(with msg: String? = "") {
+        mark(for: index, with: msg)
     }
-    
-    private func 🏷(for index: Int, with msg: String? = "") {
+
+    private func mark(for index: Int, with msg: String? = "") {
         if let message = msg {
             measurements[index][message] = CACurrentMediaTime()
         }
@@ -69,8 +69,8 @@ class 📏 {
     }
     
     // log
-    func 🖨() {
-        
+    func log() {
+
     }
 }
 
